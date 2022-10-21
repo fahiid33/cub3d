@@ -3,38 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+         #
+#    By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/21 01:18:51 by fstitou           #+#    #+#              #
-#    Updated: 2022/10/21 01:47:20 by fstitou          ###   ########.fr        #
+#    Created: 2022/10/20 23:58:46 by hkhalil           #+#    #+#              #
+#    Updated: 2022/10/21 00:00:11 by hkhalil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-CFLAGS = -Wall -Wextra -Werror
-SANITIZE = -fsanitize=address
-		
-SRC = *.c GNL/*.c 
+SRC = rendering_map_2d.c
 
 OBJ = $(SRC:.c=.o)
 
+CFLAGS = -Wall -Wextra -Werror 
 
-all : $(NAME)
+%.o: %.c
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-$(NAME):
-	
-	@gcc  $(CFLAGS) -g $(SRC) -o $(NAME)
-	@echo "👍👍👍"
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -I -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
+all: $(NAME)
 
-clean :
- 
-	@rm -f $(OBJ)
-	@echo "🚮🚮🚮"
+clean:
+	rm -rf $(OBJ)
 
-fclean : clean
-	@rm -f $(NAME)
-	@echo "🗑️ 🗑️ 🗑️"
+fclean: clean
+	rm -rf $(NAME)
 
-re : fclean all
+re: fclean all
