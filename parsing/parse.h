@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:06:47 by fstitou           #+#    #+#             */
-/*   Updated: 2022/10/31 22:05:30 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/02 00:10:30 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,11 @@ typedef struct s_infos
 {
 	int		x;
 	int		y;
+	char	direction;
+	int		rows;
+	int		columns;
 	int		ceil;
 	int		floor;
-	void	*win;
-	void	*img;
-	void	*mlx;
-	void	*img_add;
-	int		*bpp;
-	int		*size;
-	int		*end;
 	char	**map;
 	char	*no;
 	char	*so;

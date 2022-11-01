@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:06:17 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/01 22:26:14 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/02 00:12:50 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,4 @@ char	**init_file(char *file, int fd)
 	free(line);
 	tab[i] = NULL;
 	return (tab);
-}
-
-int	main(int ac, char **av)
-{
-	char	**tab;
-	int		fd;
-
-	fd = 0;
-	(void)ac;
-	tab = init_file(av[1], fd);
-	if (to_parse(tab) != 0)
-	{
-		close(fd);
-		free_tab(tab);
-		return (0);
-	}
-	fill_infos(tab);
-	return (0);
 }

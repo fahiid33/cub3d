@@ -6,7 +6,7 @@
 /*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 02:58:20 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/01 18:19:51 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/01 23:56:48 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <mlx.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../parsing/parse.h"
 
 #define MOV_SPEED	8
 #define ROT_SPEED	MOV_SPEED*M_PI/180
@@ -27,6 +28,7 @@
 #define	MSF			0.2
 #define RX			3200
 #define	RY			2000
+
 typedef struct	s_data {
 	void	*mlx;
 	void	*mlx_window;
@@ -51,6 +53,10 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
 }				t_data;
 
 //ray data struct
