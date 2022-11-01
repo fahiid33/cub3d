@@ -6,18 +6,14 @@
 /*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 02:58:20 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/02 00:25:59 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/02 00:28:41 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <stdio.h>
 #include <math.h>
-#include <mlx.h>
-#include <stdlib.h>
-#include <string.h>
 #include "../parsing/parse.h"
 
 #define MOV_SPEED	8
