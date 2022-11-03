@@ -6,11 +6,13 @@
 /*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 01:58:49 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/02 23:18:11 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/03 01:25:09 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+//use get_inter one time
 
 int main(int ac, char **av)
 {
@@ -28,8 +30,6 @@ int main(int ac, char **av)
 		return (0);
 	}
 	info = fill_infos(tab);
-	//
-	//add player direction (N == 3*M_PI/2, S == M_PI/2, E == 0, W == M_PI)
 	t_data *game = malloc(sizeof(t_data));
 	game->map = info->map;
 	game->map_rows = info->map_y;
@@ -39,7 +39,6 @@ int main(int ac, char **av)
 	game->player_x = info->x*CUBE + CUBE/2;
 	game->player_y = info->y*CUBE + CUBE/2;
 	game->angle = ft_angle(info->dir);
-	//game->resolution_x = game->map_width;
 	game->num_of_rays = info->map_x * CUBE;
 	game->mlx = mlx_init();
 	game->mlx_window = mlx_new_window(game->mlx, game->map_width, game->map_length, "cub3d");
