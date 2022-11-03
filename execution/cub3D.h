@@ -6,7 +6,7 @@
 /*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 02:58:20 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/03 01:43:24 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/03 04:21:01 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 #define	FOV			M_PI/3
 //minimap scale factor 
 #define	MSF			0.2
-#define RX			3200
-#define	RY			2000
+#define RX			1600
+#define	RY			1600
 
 typedef struct	s_data {
 	void	*mlx;
@@ -34,11 +34,7 @@ typedef struct	s_data {
 	double	resolution_y;
 	int map_length;
 	int map_width;
-	//map file
-	//char	*file_name;
-	//fill the map here
 	char	**map;
-	int		num_of_rays;
 	double	player_x;
 	double	player_y;
 	double	angle;
