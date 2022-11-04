@@ -6,7 +6,7 @@
 /*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:48:01 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/01 23:05:13 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:42:34 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@ char	**fill_map(char **tab, int flag)
 
 	i = 0;
 	j = 0;
-	map = malloc(sizeof(char *) * 100);
-	if (!map)
-		return (NULL);
+	map = f_malloc();
 	while (tab && tab[i])
 	{
-		if (is_map(tab[i]))
+		if (is_map1(tab[i]))
 		{
 			while (tab[i] && is_map(tab[i]) && flag)
+			{
+				if (tab && tab[i][0] == '\0')
+					break ;
 				map[j++] = ft_strdup(tab[i++]);
+			}
 			while (tab[i] && !flag)
 				map[j++] = ft_strdup(tab[i++]);
 			break ;
@@ -44,6 +46,8 @@ int	closed_sides(char *str)
 	int	i;
 
 	i = 0;
+	if (only_space1(str))
+		return (1);
 	while (str && is_blank(str[i]))
 		i++;
 	if (str && str[i] && str[i] != '1')
@@ -51,7 +55,7 @@ int	closed_sides(char *str)
 	while (str && str[i])
 		i++;
 	i--;
-	if (is_blank(str[i]))
+	if (str && is_blank(str[i]))
 		while (is_blank(str[i]))
 			i--;
 	if (str && str[i] != '1')
@@ -70,7 +74,7 @@ t_parse	*final_check(char **rest, t_parse *p, int pos)
 		p->m_pos = 1;
 	while (rest[i] && !p->flag)
 	{
-		if (rest[i][0] != '\0' && !only_space(rest[i]))
+		if (rest[i][0] != '\0' && !only_space1(rest[i]))
 		{
 			p->m_end = 1;
 			break ;
@@ -78,31 +82,6 @@ t_parse	*final_check(char **rest, t_parse *p, int pos)
 		i++;
 	}
 	return (p);
-}
-
-int	internal_check(char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map && map[i] && is_map(map[i]))
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (i > 0 && map[i][j] == '0' && (map[i][j + 1] == ' '
-				|| map[i][j - 1] == ' '))
-				return (0);
-			else if (i > 0 && is_map(map[i + 1]) && map[i][j] == '0'
-				&& (map[i - 1][j] == ' ' || map[i + 1][j] == ' '
-				|| map[i - 1][j] == '\0' || map[i + 1][j] == '\0'))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
 }
 
 t_parse	*m_check(char **map, t_parse *p)
@@ -126,17 +105,9 @@ t_parse	*parse_map(char **map, t_parse *p)
 	{	
 		while (map && map[i] && is_map(map[i]) && !p->flag)
 		{
-			if ((i == 0 && !map_closed(map[i])))
-				p->map_open = 1;
-			if (i > 0 && map[i + 1] != 0 && !closed_sides(map[i]))
-				p->map_open = 1;
-			if (map[i + 1] == 0 || !is_map(map[i + 1]))
-				if (!map_closed(map[i]))
-					p->map_open = 1;
-			if (invalid_char(map[i]))
-				p->wg_char = 1;
-			if (check_position(map[i]))
-				pos += check_position(map[i]);
+			if (map && map[i][0] == '\0')
+				break ;
+			thecheck(i, &pos, map, p);
 			i++;
 		}
 		p = final_check(map + i, p, pos);

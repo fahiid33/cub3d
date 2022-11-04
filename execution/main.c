@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 01:58:49 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/03 04:21:46 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:02:15 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ int main(int ac, char **av)
 		return (0);
 	}
 	info = fill_infos(tab);
+	// system("leaks cub3D");
+	// exit(0);
 	//execution
 	t_data *game = malloc(sizeof(t_data));
-	game->map = info->map;
+	game->map = info->new_map;
 	game->map_rows = info->map_y;
 	game->map_columns = info->map_x;
 	game->map_length = info->map_y * CUBE;

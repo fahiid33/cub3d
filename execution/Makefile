@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 23:58:46 by hkhalil           #+#    #+#              #
-#    Updated: 2022/11/02 22:47:06 by hkhalil          ###   ########.fr        #
+#    Updated: 2022/11/04 04:33:37 by fstitou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3D
 
 SRC = main.c DDA.c hooks.c map_collision.c render_map.c render_walls.c ray_distance.c angle.c ../parsing/tools/tools1.c  ../parsing/tools/tools2.c ../parsing/tools/tools3.c \
 		../parsing/GNL/get_next_line.c  ../parsing/GNL/get_next_line_utils.c ../parsing/errors.c ../parsing/fill.c ../parsing/identifiers_utils.c  ../parsing/identifiers.c \
-		../parsing/map_utils.c  ../parsing/map.c ../parsing/parse.c ../parsing/utils.c ../parsing/to_add.c
+		../parsing/map_utils.c  ../parsing/map.c ../parsing/parse.c ../parsing/utils.c ../parsing/to_add.c ../parsing/tools/tools4.c ../parsing/utils2.c
 
 OBJ = $(SRC:.c=.o)
 

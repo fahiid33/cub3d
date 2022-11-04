@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:06:47 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/02 00:10:30 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:43:49 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ typedef struct s_infos
 {
 	int		x;
 	int		y;
-	char	direction;
-	int		rows;
-	int		columns;
+	char	dir;
+	int		map_x;
+	int		map_y;
 	int		ceil;
 	int		floor;
 	char	**map;
+	char	**new_map;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -78,6 +79,14 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strndup(char *str, unsigned int n);
 int		ft_int_strchr(const char *s, int c);
 int		map_len(char **map);
+int		to_parse(char **tab);
+int		is_map1(char *s);
+int		only_space1(char *str);
+char	**init_file(char *file, int fd);
+int		map_x(char **map);
+char	*fill_spaces(char *map_x, char *to_fill, int size);
+char	**id_check(char **tab, t_parse *p);
+char	**f_malloc(void);
 
 // parse
 
@@ -88,6 +97,7 @@ t_parse	*check_map(t_parse *p, char **map);
 t_info	*fill_infos(char **tab);
 char	**fill_identifiers(char **to_fill, char **tab, t_parse *p);
 char	**fill_map(char **tab, int flag);
+void	thecheck(int i, int *pos, char **map, t_parse *p);
 int		check_colors(char *str, int i);
 int		check_textures(char *str, int i);
 int		map_closed(char *str);
@@ -97,5 +107,9 @@ int		check_position(char *s);
 int		check_space(char *str);
 int		is_identifier(char *s);
 int		print_errors(t_parse *p);
+char	get_player(char **map);
+int		is_player(char p);
+int		internal_check(char **map);
+int		closed_sides(char *str);
 
 #endif
