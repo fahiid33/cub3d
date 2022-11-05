@@ -6,7 +6,7 @@
 /*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 02:58:20 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/03 04:21:01 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/05 23:05:53 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,34 @@
 //minimap scale factor 
 #define	MSF			0.2
 #define RX			1600
-#define	RY			1600
+#define	RY			1000
+
+//ray data struct
+typedef struct	 s_raydata {
+
+	double	inter_x;
+	double	inter_y;
+	double	d;
+	int		hit;
+	int		v_or_h;
+	int		wall;
+}	t_raydata;
 
 typedef struct	s_data {
 	void	*mlx;
 	void	*mlx_window;
-	int	map_rows;
-	int	map_columns;
-	double	resolution_x;
-	double	resolution_y;
-	int map_length;
-	int map_width;
+	int		map_rows;
+	int		map_columns;
+	int 	map_length;
+	int 	map_width;
 	char	**map;
 	double	player_x;
 	double	player_y;
 	double	angle;
+	t_raydata	ray;
+	t_raydata	rays[RX];
+	int		floor;
+	int		ceilling;
 	void	*img;
 	char	*addr;
 	void	*m_img;
@@ -51,13 +64,6 @@ typedef struct	s_data {
 	char	*ea;
 }				t_data;
 
-//ray data struct
-typedef struct	 s_raydata {
-
-	double	inter_x;
-	double	inter_y;
-	int		hit;
-}	t_raydata;
 
 void	render_map(t_data *game);
 void 	DDA(double x1, double y1, double x2, double y2, t_data *game, int color);
@@ -71,4 +77,5 @@ void	get_inter_point(t_data *game, t_raydata *t_raydata, double ang);
 void	render_walls(t_data *game);
 double 	norm_angle(double angle);
 double	ft_angle(char c);
+void	floor_ceilling(t_data *game);
 #endif

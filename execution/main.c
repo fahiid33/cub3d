@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 01:58:49 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/04 04:02:15 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/05 23:06:29 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int main(int ac, char **av)
 	game->map_width = info->map_x * CUBE;
 	game->player_x = info->x*CUBE + CUBE/2;
 	game->player_y = info->y*CUBE + CUBE/2;
+	game->floor = info->floor;
+	game->ceilling = info->ceil;
 	game->angle = ft_angle(info->dir);
 	game->mlx = mlx_init();
 	game->mlx_window = mlx_new_window(game->mlx, RX, RY, "cub3d");
