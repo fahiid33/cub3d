@@ -6,7 +6,7 @@
 /*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 03:33:40 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/05 22:57:01 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/08 23:11:54 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	draw_wall(t_data *game)
 {
+	unsigned int texel_color;
 	int	i;
+	int	y;
+	int	offset_x;
+	int	offset_y;
+	int	start;
+	int	end;
 	double	ray_angle;
 	double	wallheight;
 	double	beta;
@@ -36,32 +42,74 @@ void	draw_wall(t_data *game)
 		wallheight = round(((RY*d2pp)/((game->rays[i]).d*cos(beta))));
 		if (wallheight < RY)
 		{
-			if (!game->ray.hit)
-			{
-				if (game->ray.wall == 'N')
-					DDA(i, RY/2 - wallheight/2, i, RY/2 + wallheight/2, game, 0x808000);
-				else if (game->ray.wall == 'S')
-					DDA(i, RY/2 - wallheight/2, i, RY/2 + wallheight/2, game, 0x3649C2);
-				else if (game->ray.wall == 'E')
-					DDA(i, RY/2 - wallheight/2, i, RY/2 + wallheight/2, game, 0x8ED3F1);
-				else if (game->ray.wall == 'W')
-					DDA(i, RY/2 - wallheight/2, i, RY/2 + wallheight/2, game, 0xF1D38E);
-			}
-			else
-				DDA(i, RY/2 - wallheight/2, i, RY/2 + wallheight/2, game, 0x000000);
+			start = RY/2 - wallheight/2;
+			end = RY/2 + wallheight/2;
 		}
 		else
 		{
-			if (game->ray.wall == 'N')
-					DDA(i, 0, i, RY - 1, game, 0x808000);
-			else if (game->ray.wall == 'S')
-					DDA(i, 0, i, RY - 1, game, 0x3649C2);
-			else if (game->ray.wall == 'E')
-					DDA(i, 0, i, RY - 1, game, 0x8ED3F1);
-			else if (game->ray.wall == 'W')
-					DDA(i, 0, i, RY - 1, game, 0xF1D38E);
-			//DDA(i, 0, i, RY - 1, game, 0x808000);
+			start = 0;
+			end = RY;
 		}
+			if (game->ray.wall == 'N')
+			{
+				if (game->ray.v_or_h == 0)
+					offset_x = (int)game->rays[i].inter_y % CUBE;
+				else
+					offset_x = (int)game->rays[i].inter_x % CUBE;
+				y = start;
+				while (y <  end)
+				{
+					offset_y = (y + (wallheight/2) - (RY/2))*((float)game->textures[3].t_height/wallheight);
+					texel_color = get_pixel(&game->textures[0], offset_x, offset_y);
+					my_mlx_pixel_put(game, i, y, texel_color);
+					y++;
+				}
+			}
+			else if (game->ray.wall == 'S')
+			{
+				if (game->ray.v_or_h == 0)
+					offset_x = (int)game->rays[i].inter_y % CUBE;
+				else
+					offset_x = (int)game->rays[i].inter_x % CUBE;
+				y = start;
+				while (y <  end)
+				{
+					offset_y = (y + (wallheight/2) - (RY/2))*((float)game->textures[3].t_height/wallheight);
+					texel_color = get_pixel(&game->textures[1], offset_x, offset_y);
+					my_mlx_pixel_put(game, i, y, texel_color);
+					y++;
+				}
+			}
+			else if (game->ray.wall == 'E')
+			{
+				if (game->ray.v_or_h == 0)
+					offset_x = (int)game->rays[i].inter_y % CUBE;
+				else
+					offset_x = (int)game->rays[i].inter_x % CUBE;
+				y = start;
+				while (y <  end)
+				{
+					offset_y = (y + (wallheight/2) - (RY/2))*((float)game->textures[3].t_height/wallheight);
+					texel_color = get_pixel(&game->textures[2], offset_x, offset_y);
+					my_mlx_pixel_put(game, i, y, texel_color);
+					y++;
+				}
+			}
+			else if (game->ray.wall == 'W')
+			{
+				if (game->ray.v_or_h == 0)
+					offset_x = (int)game->rays[i].inter_y % CUBE;
+				else
+					offset_x = (int)game->rays[i].inter_x % CUBE;
+				y = start;
+				while (y <  end)
+				{
+					offset_y = (y + (wallheight/2) - (RY/2))*((float)game->textures[3].t_height/wallheight);
+					texel_color = get_pixel(&game->textures[3], offset_x, offset_y);
+					my_mlx_pixel_put(game, i, y, texel_color);
+					y++;
+				}
+			}
 		ray_angle += FOV / RX;
 		i++;
 	}

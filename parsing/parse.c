@@ -6,7 +6,7 @@
 /*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:06:17 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/06 05:42:16 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:00:05 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**init_file(char *file, int fd)
 	i = 0;
 	fd = check_file(file);
 	if (fd == -1)
-		errors(1, 0);
+		errors(1);
 	tab = malloc(sizeof(char *) * 100);
 	while (1)
 	{

@@ -6,13 +6,13 @@
 /*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:01:17 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/06 05:40:54 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:25:32 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-int	get_texture(char *str, t_textures *tex, t_info *info)
+char	*get_texture(char *str)
 {
 	int		i;
 	int		len;
@@ -24,17 +24,7 @@ int	get_texture(char *str, t_textures *tex, t_info *info)
 			i++;
 	len = get_len(str + i);
 	file = ft_substr(str + i, 0, len);
-	tex->img = mlx_xpm_file_to_image(info->mlx, file, &tex->width, &tex->height);
-	if (!tex->img)
-	{
-		//free data;
-		free(file);
-		errors(5, info);
-		return (0);
-	}
-	free(file);
-	tex->img_add = mlx_get_data_addr(tex->img, &tex->bpp, &tex->ls, &tex->end);
-	return (1);
+	return (file);
 }
 
 int	get_color(char *str)
@@ -122,20 +112,18 @@ t_info	*fill_infos(char **tab)
 
 	i = 0;
 	info = malloc(sizeof(t_info));
-	info->mlx = mlx_init();
-	info->tab = tab;
 	if (!info)
 		return (NULL);
 	while (tab && tab[i])
 	{
 		if (is_identifier(tab[i]) == 1)
-			get_texture(tab[i] + 2, &info->no, info);
+			info->no = get_texture(tab[i] + 2);
 		if (is_identifier(tab[i]) == 2)
-			get_texture(tab[i] + 2, &info->so, info);
+			info->so = get_texture(tab[i] + 2);
 		if (is_identifier(tab[i]) == 3)
-			get_texture(tab[i] + 2, &info->ea, info);
+			info->we = get_texture(tab[i] + 2);
 		if (is_identifier(tab[i]) == 4)
-			get_texture(tab[i] + 2, &info->so, info);
+			info->ea = get_texture(tab[i] + 2);
 		if (is_identifier(tab[i]) == 5)
 			info->floor = get_color(tab[i] + 2);
 		if (is_identifier(tab[i]) == 6)

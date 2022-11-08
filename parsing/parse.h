@@ -6,7 +6,7 @@
 /*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:06:47 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/06 05:39:38 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:43:49 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <ctype.h>
-# include <mlx.h>	
+# include <mlx.h>
 
 typedef struct s_parse
 {
@@ -43,20 +43,8 @@ typedef struct s_parse
 	int	flag;
 }	t_parse;
 
-typedef  struct s_textures
-{
-	int		height;
-	int		width;
-	void	*img_add;
-	int		bpp;
-	int		end;
-	int		ls;
-	void	*img;
-}	t_textures;
-
 typedef struct s_infos
 {
-	void	*mlx;
 	int		x;
 	int		y;
 	char	dir;
@@ -66,11 +54,10 @@ typedef struct s_infos
 	int		floor;
 	char	**map;
 	char	**new_map;
-	char	**tab;
-	t_textures	no;
-	t_textures	so;
-	t_textures	we;
-	t_textures	ea;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
 }	t_info;
 
 // tools
@@ -81,7 +68,7 @@ int		get_len(char *str);
 int		is_blank(char c);
 int		is_invalid(char c);
 int		check_file(char *file);
-void	errors(int err, t_info *info);
+void	errors(int err);
 char	**ft_split(char const *s, char c);
 int		only_space(char *str);
 void	free_tab(char **tab);

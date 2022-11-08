@@ -6,7 +6,7 @@
 /*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 04:20:21 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/06 05:42:04 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/04 04:34:36 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,12 @@ int	is_map1(char *s)
 		return (1);
 	return (0);
 }
-void	free_struct(t_info *info)
-{
-	if (info)
-	{
-		free_tab(info->tab);
-		free(info);
-	}
-}
 
-void	errors(int err, t_info *info)
+void	errors(int err)
 {
 	if (err == 1)
 	{
-		(void)info;
-		write(2, "Error in file\n", 21);
-		exit(1);
-	}
-	if (err == 5)
-	{
-		write(2, "Error in xpm file\n", 19);
-		free_struct(info);
+		write(2, "Error in file format\n", 21);
 		exit(1);
 	}
 }
