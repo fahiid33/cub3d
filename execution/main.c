@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 01:58:49 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/09 01:35:26 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/09 01:54:10 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ int main(int ac, char **av)
 	game->mlx = mlx_init();
 	game->mlx_window = mlx_new_window(game->mlx, RX, RY, "cub3d");
 	//n
-	game->textures[0].t_file = ft_strdup(info->no);
+	game->textures[0].t_file = info->no;
 	//s
-	game->textures[1].t_file = ft_strdup(info->so);
+	game->textures[1].t_file = info->so;
 	// w
-	game->textures[2].t_file = ft_strdup(info->we);
+	game->textures[2].t_file = info->we;
 	//e
-	game->textures[3].t_file = ft_strdup(info->ea);
+	game->textures[3].t_file = info->ea;
 	//free info struct here
-
+	free_struct(info);
 	//debug
 	read_texture(game);
 	//end debug
