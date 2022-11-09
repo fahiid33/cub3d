@@ -6,7 +6,7 @@
 /*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 04:20:21 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/04 04:34:36 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/09 19:43:58 by fstitou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	errors(int err)
 {
 	if (err == 1)
 	{
-		write(2, "Error in file format\n", 21);
+		write(2, "Error\n", 7);
+		write(2, "The file is invalid\n", 21);
 		exit(1);
 	}
 }

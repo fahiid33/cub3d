@@ -3,12 +3,13 @@
 WE ../parsing/xpm/w.xpm                 
 
 EA   ../parsing/xpm/e.xpm     
-
+ 
 SO    ../parsing/xpm/s.xpm    
-NO   ../parsing/xpm/n.xpm       
+    
+NO ../parsing/xpm/n.xpm       
 
 C  142  ,   98  , 100     
-F 255   ,  140  , 0     
+F 128   ,  128  , 128     
                      
 11111111                                                1             
 10000001                                                11            
