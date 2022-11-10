@@ -6,7 +6,7 @@
 /*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 03:11:09 by hkhalil           #+#    #+#             */
-/*   Updated: 2022/11/09 04:47:32 by hkhalil          ###   ########.fr       */
+/*   Updated: 2022/11/10 09:53:01 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	free_game(t_data *game, int flag)
 		mlx_destroy_image(game->mlx, game->img);
 		free(game);
 	}
-	system("leaks cub3D");
 }
 
 int	ft_exit(t_data *game, int flag)
