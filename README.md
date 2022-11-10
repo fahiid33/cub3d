@@ -1,6 +1,7 @@
 subject pdf :
 
-file:///C:/Users/user/Downloads/en.subject(13).pdf
+https://cdn.intra.42.fr/pdf/pdf/66360/en.subject.pdf
+
 
 source :
 
