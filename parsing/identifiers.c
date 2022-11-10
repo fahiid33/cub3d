@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identifiers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fstitou <fstitou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkhalil <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:42:13 by fstitou           #+#    #+#             */
-/*   Updated: 2022/11/09 19:40:24 by fstitou          ###   ########.fr       */
+/*   Updated: 2022/11/10 02:29:34 by hkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int	is_identifier(char *s)
 	int	i;
 
 	i = 0;
-	if (s && is_blank(s[i]))
-		while (is_blank(s[i]))
-			i++;
 	if (s && s[i])
 	{
 		if (s[i] == 'N' && s[i + 1] == 'O')
